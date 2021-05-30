@@ -12,6 +12,7 @@ pipeline {
       steps {
         sh "docker login -u ${DOCKERHUB_USER} -p {DOCKERHUB_PW}"
       }
+    }
     stage('Build') {
       steps {
         sh "cat docker-compose.build.yml"
