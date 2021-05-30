@@ -9,13 +9,13 @@ pipeline {
   stages {
     stage('Pre Check') {
       steps {
-        sh "test -f ~/.docker/config.json"
-        sh "cat ~/.docker/config.json | grep docker.io"
+        sh "echo test -f ~/.docker/config.json"
+        sh "echo cat ~/.docker/config.json | grep docker.io"
       }
     }
     stage('Build') {
       steps {
-        sh "cat docker-compose.build.yml"
+        sh "echo cat docker-compose.build.yml"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml down"
         sh "docker -H ssh://${BUILD_HOST} volume prune -f"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml build"
