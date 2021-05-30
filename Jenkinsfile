@@ -13,6 +13,12 @@ pipeline {
         sh "docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PW}"
       }
     }
+    stage('Pre Check') {
+      steps {
+        sh "test -f ~/.docker/config.json"
+        sh "cat ~/.docker/config.json | grep docker.io"
+      }
+    }
     stage('Build') {
       steps {
         sh "cat docker-compose.build.yml"
