@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Login') {
       steps {
-        sh "docker login -u ${DOCKERHUB_USER} -p {DOCKERHUB_PW}"
+        sh "docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PW}"
       }
     }
     stage('Build') {
